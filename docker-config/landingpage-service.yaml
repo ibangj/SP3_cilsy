@@ -1,0 +1,14 @@
+apiVersion: apps/v1beta2
+kind: Service
+apiVersion: v1
+metadata:
+  name: landingpage
+#Cluster IP membuat IP Private di dalam kubernetes cluster
+spec:
+  type: ClusterIP
+  selector:
+    app: landingpage
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080

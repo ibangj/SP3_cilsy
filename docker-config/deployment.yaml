@@ -1,0 +1,23 @@
+apiVersion: apps/v1 
+# for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: sosialmedia-deployment
+spec:
+  selector:
+    matchLabels:
+      app: sosialmedia
+  replicas: 2        
+  template:          
+    metadata:
+# unlike pod-nginx.yaml, the name is not included in the meta data as a unique name is
+# generated from the deployment name
+      labels:
+        app: sosialmedia
+    spec:
+      containers:
+      - name: sosialmedia
+        image: ibangj/devops11b:sosialmedia1.1
+        ports:
+        - containerPort: 8080
+
